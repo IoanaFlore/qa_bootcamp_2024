@@ -90,7 +90,7 @@ public class Hello {
         //-Is divisible by 4 but not by 100
         //-Is divisible by 100 but not by 400
 
-        int year = 2000;
+        int year = 2004;
         if(year>=1900 && year<=2024){
             int daysInFebruary;
             if ((year % 4 == 0 && year % 100 != 0) || (year % 100 == 0 && year % 400 != 0)) {
