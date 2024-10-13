@@ -23,7 +23,5 @@ public class Square {
         System.out.println("Square with side " + this.squareSide + " has area of " + getArea());
     }
 
-    public static void printSquare(Square sq){
-        System.out.println("Square with side " + sq.getSquareSide() + " has area of " + sq.getArea());
-    }
+
 }
