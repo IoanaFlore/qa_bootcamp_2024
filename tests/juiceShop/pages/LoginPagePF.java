@@ -1,6 +1,6 @@
-package pages;
+package juiceShop.pages;
 
-import frameworkUtils.Utils;
+import juiceShop.frameworkUtils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +20,6 @@ public class LoginPagePF {
     private static final String MODAL_SELECTOR = "#mat-dialog-0 > app-welcome-banner > div > div:nth-child(3) > button.mat-focus-indicator.close-dialog.mat-raised-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper > mat-icon";
 
     private static final String LOGIN_TEXT_VALUE = "Login";
-
 
     // first solution
     @FindBy(css = LOGIN_TEXT_SELECTOR)

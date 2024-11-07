@@ -1,4 +1,4 @@
-package frameworkUtils;
+package juiceShop.frameworkUtils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +56,7 @@ public class Utils {
             }
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//asteapta maxim 5 sec pt orice ele din pg pe care il caut
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//asteapta maxim 5 sec pt orice ele din pg pe care il caut
         return driver;
     }
 
