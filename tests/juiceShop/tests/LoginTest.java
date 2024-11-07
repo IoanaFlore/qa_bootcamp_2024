@@ -4,16 +4,14 @@ import frameworkUtils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import java.time.Duration;
+import juiceShop.pages.LoginPage;
+import juiceShop.pages.LoginPagePF;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -89,53 +87,23 @@ public class LoginTest {
 
     @Test
     public void login01() {
-
         driver.get(baseUrl + "#/login");
+        LoginPage lp = new LoginPage(driver);
+        lp.awaitDismissModal();
+        lp.login("alex@alex.com","Onert123$");
 
-        //     WebElement dismissModalElement = driver.findElement(
-        //     By.cssSelector("#mat-dialog-0 > app-welcome-banner > div > div:nth-child(3) > button.mat-focus-indicator.close-dialog.mat-raised-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper > mat-icon"));
-
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement dismissModalElement = wait.until(
-//                ExpectedConditions.elementToBeClickable(
-//                By.cssSelector("#mat-dialog-0 > app-welcome-banner > div > div:nth-child(3) > button.mat-focus-indicator.close-dialog.mat-raised-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper > mat-icon")));
-
-        //PARTEA DE EXPLICITWAIT UNDE APELEX METODA STATICA
-        WebElement dismissModalElement = Utils.waitForElement(driver, 5,
-                By.cssSelector(Selectors.MODAL_OK_BUTTON));
-        dismissModalElement.click();
-
-
-
-        FluentWait wait = new FluentWait(driver);
-        try {
-            wait.wait(5000);
-            wait.pollingEvery(Duration.ofSeconds(1));
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    }
+    ///////// this is with Page Factory
+    @Test
+    public void login02(){
+        driver.get(baseUrl + "#/login");
+        LoginPagePF lp = new LoginPagePF(driver);
+        lp.dismissModalWait();
+        // Best practice is to have the Asserts in tests
+        Assert.assertEquals(lp.getLoginText(),lp.getStaticLoginText());
+        lp.login("alex@alex.com","Onert123$");
 
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")));
-
-
-        WebElement loginElement = driver.findElement(By.id(Selectors.USERNAME_ID));
-        loginElement.sendKeys("alex@alex.com");
-
-     //   driver.findElement(By.id("email")).sendKeys("alex@alex.com");
-
-        WebElement passwordElement = driver.findElement(By.id(Selectors.PASSWORD_ID));
-        passwordElement.sendKeys("Abc123$");
-
-        WebElement submitButton = driver.findElement(By.id(Selectors.SUBMIT_ID));
-        submitButton.click();
-
-        //Threadsleep -nu este recomdat sa se foloseasca deoarece intrerupe programu cate secunde punem
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @AfterMethod
