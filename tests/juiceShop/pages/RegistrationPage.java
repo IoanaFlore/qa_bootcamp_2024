@@ -1,12 +1,11 @@
 package juiceShop.pages;
 
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import juiceShop.frameworkUtils.Utils;
-
-import static juiceShop.frameworkUtils.Selectors.*;
-
 public class RegistrationPage extends BasePage {
     // register page
     private static final String REGISTER_HEADER = "body > app-root > div > mat-sidenav-container > mat-sidenav-content > app-register > div > mat-card > h1";
@@ -18,12 +17,14 @@ public class RegistrationPage extends BasePage {
     private static final String SECURITY_ANSWER = "securityAnswerControl";
     private static final String REGISTER_SUBMIT_BUTTON = "registerButton";
     private static final String COOKIES_MODAL = "body > div.cc-window.cc-floating.cc-type-info.cc-theme-classic.cc-bottom.cc-right.cc-color-override--1225450786 > div > a";
+    // div.mat-simple-snack-bar-content
 
     private static final String REGISTER_STATIC_TEXT = "User Registration";
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
+
     public String getRegisterHeader() {
         return driver.findElement(By.cssSelector(REGISTER_HEADER)).getText();
     }
@@ -55,9 +56,10 @@ public class RegistrationPage extends BasePage {
         WebElement cookiesButton = driver.findElement(By.cssSelector(COOKIES_MODAL));
         cookiesButton.click();
 
+        Utils.scrollToElement(driver, cookiesButton);
+
         WebElement submitButton = Utils.waitForElementClickable(driver, 10, By.id(REGISTER_SUBMIT_BUTTON));
         submitButton.click();
 
     }
-
 }
