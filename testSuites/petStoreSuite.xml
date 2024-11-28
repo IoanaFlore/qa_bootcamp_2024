@@ -17,4 +17,11 @@
         </classes>
     </test>
 
+    <test name="Store Tests">
+        <classes>
+            <class name="petStore.StoreTest"/>
+        </classes>
+    </test>
+
+
 </suite>
