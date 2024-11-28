@@ -20,7 +20,7 @@
         <jsonVersion>20240303</jsonVersion>
         <gsonVersion>2.9.0</gsonVersion>
         <surefireRunnerVersion>3.5.2</surefireRunnerVersion>
-        <suiteFile>Curs2/testSuites/petStoreSuite.xml</suiteFile>
+        <suiteFile>testSuites/petStoreSuite.xml</suiteFile>
     </properties>
 
     <dependencies>
@@ -90,8 +90,8 @@
     </dependencies>
 
     <build>
-        <testSourceDirectory>Curs2/src/test/java</testSourceDirectory>
-        <sourceDirectory>Curs2/src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <pluginManagement>
             <plugins>
                 <plugin>
