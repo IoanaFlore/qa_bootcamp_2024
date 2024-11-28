@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ro.qa.bootcamp.betfair</groupId>
+    <artifactId>qa_bootcamp</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <junitVersion>5.11.2</junitVersion>
+        <lombokVersion>1.18.34</lombokVersion>
+        <testngVersion>7.10.2</testngVersion>
+        <surefireVersion>3.5.1</surefireVersion>
+        <extendVersion>5.1.2</extendVersion>
+        <seleniumVersion>4.25.0</seleniumVersion>
+        <restAssuredVersion>5.5.0</restAssuredVersion>
+        <hamcrestVersion>3.0</hamcrestVersion>
+        <jsonVersion>20240303</jsonVersion>
+        <gsonVersion>2.9.0</gsonVersion>
+        <surefireRunnerVersion>3.5.2</surefireRunnerVersion>
+        <suiteFile>Curs2/testSuites/petStoreSuite.xml</suiteFile>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junitVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombokVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testngVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extendVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${seleniumVersion}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restAssuredVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrestVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${jsonVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gsonVersion}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <testSourceDirectory>Curs2/src/test/java</testSourceDirectory>
+        <sourceDirectory>Curs2/src/main/java</sourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefireVersion}</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                        </suiteXmlFiles>
+                        <properties>
+                            <name>listener</name>
+                            <value>customReporting.CustomTestListener, customReporting.CustomTestReporter</value>
+                        </properties>
+
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-testng</artifactId>
+                            <version>${surefireRunnerVersion}</version>
+                        </dependency>
+                    </dependencies>
+
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+
+</project>
